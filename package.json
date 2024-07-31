@@ -16,6 +16,7 @@
     "fastify": "^4.21.0",
     "googleapis": "^39.2.0",
     "handlebars": "^4.7.8",
+    "node-fetch": "^2.7.0",
     "ping": "^0.4.4",
     "ssh2": "^1.15.0",
     "ssh2-sftp-client": "^10.0.3"

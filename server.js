@@ -8,8 +8,11 @@ const {
   getDhcpLeases,
   getSystemConfig
 } = require("./src/connect");
+const { getMacVendor } = require("./src/macVendors.js");
+const { getWhoisInfo } = require("./src/whois.js"); 
 const app = express();
 const pingIp = require("./src/ping");
+
 
 app.use(cors());
 app.use(express.json());
@@ -87,6 +90,28 @@ app.get("/systemConfig", async (req, res) => {
     res.json({ message: data });
   } catch (error) {
     res.status(500).json({ error: `Error al obtener configuración del sistema: ${error.message}` });
+  }
+});
+
+app.get("/macVendor/:mac", async (req, res) => {
+  const { mac } = req.params;
+
+  try {
+    const vendor = await getMacVendor(mac);
+    res.json({ vendor });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.get("/whois/:ip", async (req, res) => {
+  const { ip } = req.params;
+
+  try {
+    const data = await getWhoisInfo(ip);
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 });
 
