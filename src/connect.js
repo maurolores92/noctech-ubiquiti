@@ -73,7 +73,7 @@ const rebootAntenna = () => execCommand("reboot").finally(() => {
   conn.connected = false;
 });
 
-const downloadFile = () => execCommand("wget -O /dev/null http://codewithmauricio.tech/IPCam.apk");
+const downloadFile = () => execCommand("wget -O /dev/null http://noctech.online/IPCam.apk");
 
 const getDhcpLeases = () => execCommand('cat /tmp/dhcpd.leases');
 
